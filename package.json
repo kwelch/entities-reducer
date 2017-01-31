@@ -5,9 +5,10 @@
     "build": "rimraf dist && babel --copy-files --out-dir dist --ignore *.spec.js,__mocks__,__snapshots__ src",
     "release": "semantic-release pre && npm publish && semantic-release post",
     "lint": "eslint .",
-    "report-coverage": "codecov"
+    "report-coverage": "codecov",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
-  "version": "0.0.0-alpha",
+  "version": "0.0.0-development",
   "description": "Redux normalized entity reducer",
   "main": "dist/index.js",
   "files": [
