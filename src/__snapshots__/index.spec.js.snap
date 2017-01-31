@@ -1,0 +1,82 @@
+exports[`entitiesReducer should allow customer reducers  1`] = `
+Object {
+  "users": Object {},
+}
+`;
+
+exports[`entitiesReducer should reduce entities from payload 1`] = `
+Object {
+  "users": Object {
+    "1": Object {
+      "firstName": "Kyle",
+      "id": 1,
+      "lastName": "Welch",
+      "middleName": "Ryan",
+    },
+  },
+}
+`;
+
+exports[`entitiesReducer should reduce entities from payload 2`] = `
+Object {
+  "roles": Object {
+    "1": Object {
+      "id": 1,
+      "type": "Admin",
+    },
+  },
+  "users": Object {
+    "1": Object {
+      "firstName": "Kyle",
+      "id": 1,
+      "lastName": "Welch",
+      "middleName": "Ryan",
+      "role": 1,
+    },
+  },
+}
+`;
+
+exports[`entitiesReducer should reduce entities from payload 3`] = `
+Object {
+  "roles": Object {
+    "1": Object {
+      "id": 1,
+      "type": "Admin",
+    },
+  },
+  "users": Object {
+    "1": Object {
+      "address": Object {
+        "city": "IL",
+      },
+      "firstName": "Kyle",
+      "id": 1,
+      "lastName": "Welch",
+      "middleName": "Ryan",
+    },
+  },
+}
+`;
+
+exports[`entitiesReducer should reduce entities from payload 4`] = `
+Object {
+  "roles": Object {
+    "1": Object {
+      "id": 1,
+      "type": "Admin",
+    },
+  },
+  "users": Object {
+    "1": Object {
+      "address": Object {
+        "city": "TN",
+      },
+      "firstName": "Kyle",
+      "id": 1,
+      "lastName": "Welch",
+      "middleName": "Ryan",
+    },
+  },
+}
+`;

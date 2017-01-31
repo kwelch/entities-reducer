@@ -1,0 +1,48 @@
+{
+  "name": "entities-reducer",
+  "scripts": {
+    "test": "jest",
+    "build": "rimraf dist && babel --copy-files --out-dir dist --ignore *.spec.js,__mocks__,__snapshots__ src",
+    "release": "semantic-release pre && npm publish && semantic-release post",
+    "lint": "eslint .",
+    "report-coverage": "codecov"
+  },
+  "version": "0.0.0-alpha",
+  "description": "Redux normalized entity reducer",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kentcdodds/prettier-eslint.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kwelch/entities-reducer/issues"
+  },
+  "homepage": "https://github.com/kwelch/entities-reducer.git#readme",
+  "author": "Kyle Welch <kwelch0626@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-eslint": "^7.1.1",
+    "babel-jest": "^18.0.0",
+    "babel-polyfill": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0",
+    "codecov": "^1.0.1",
+    "eslint": "^3.14.1",
+    "jest": "^18.1.0",
+    "rimraf": "^2.5.4",
+    "semantic-release": "^6.3.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended"
+    ],
+    "parser": "babel-eslint",
+    "env": {
+      "es6": true,
+      "jest": true
+    }
+  }
+}

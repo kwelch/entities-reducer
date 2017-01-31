@@ -1,2 +1,6 @@
-# entities-reducer
-Redux high order reducer for FSA normalized payloads
+# Entities reducer
+
+-- TODO: Write some docs
+
+For now read the tests :)
+
