@@ -4,6 +4,32 @@ Object {
 }
 `;
 
+exports[`entitiesReducer should allow for custom data resolver 1`] = `
+Object {
+  "users": Object {
+    "1": Object {
+      "firstName": "Kyle",
+      "id": 1,
+      "lastName": "Welch",
+      "middleName": "Ryan",
+    },
+  },
+}
+`;
+
+exports[`entitiesReducer should allow for non-fsa actions 1`] = `
+Object {
+  "users": Object {
+    "1": Object {
+      "firstName": "Kyle",
+      "id": 1,
+      "lastName": "Welch",
+      "middleName": "Ryan",
+    },
+  },
+}
+`;
+
 exports[`entitiesReducer should reduce entities from payload 1`] = `
 Object {
   "users": Object {

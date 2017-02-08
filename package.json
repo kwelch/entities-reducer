@@ -45,5 +45,12 @@
       "es6": true,
       "jest": true
     }
+  },
+  "peerDependencies": {
+    "redux": "^3.3.0"
+  },
+  "dependencies": {
+    "flux-standard-action": "^1.1.0",
+    "redux": "3.0.3"
   }
 }

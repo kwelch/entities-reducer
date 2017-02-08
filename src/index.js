@@ -1,3 +1,6 @@
+import { isFSA } from 'flux-standard-action';
+import { combineReducers } from 'redux';
+
 const updateEntity = (state, entities) => {
   return Object.assign({}, state, entities);
 };
@@ -6,16 +9,25 @@ const updateEntities = (state, key, entities) => {
   return Object.assign({}, state, { [key]: updateEntity(state[key], entities[key]) });
 };
 
-export default (reducers) => (state = {}, action) => {
-  const { payload } = action;
+const defaultDataResolver = (action) => {
+  if (isFSA(action)) {
+    const { payload } = action;
+    if (payload && !payload.error && payload.entities) {
+      return payload.entities;
+    }
+    return null;
+  }
+  return action.entities;
+};
+
+export default (reducers, { dataResolver } = { dataResolver: defaultDataResolver }) => (state = {}, action) => {
   let newState = state;
-  if (payload && !payload.error && payload.entities) {
-    const { entities } = payload;
+  const entities = dataResolver(action);
+  if (entities && typeof entities === 'object') {
     newState = Object.keys(entities).reduce((acc, key) => updateEntities(acc, key, entities), newState);
   }
-  newState = Object.keys(reducers).reduce((acc, key) => {
-    const reducerReturn = reducers[key](acc[key], action);
-    return Object.assign({}, acc, { [key]: reducerReturn });
-  }, newState);
+  if (reducers && typeof reducers === 'object' && Object.keys(reducers).length > 0) {
+    return combineReducers(reducers)(newState, action);
+  }
   return newState;
 };
