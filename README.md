@@ -10,7 +10,7 @@
 
 This package is a high-order reducer that updates state using entities from [normalizr](https://github.com/paularmstrong/normalizr).
 By default, it expects the action to have a property of `entities` or to follow the [`flux-standard-action` spec](https://github.com/acdlite/flux-standard-action).
-However, it is possible to pass a data resolver ([see Parameters](#parameter-data-resolver)) if your case doesn't match either of those.  
+However, it is possible to pass a data resolver ([see Parameters](#parameters)) if your case doesn't match either of those.  
 
 ## Why
 **Why does this package exist?**
@@ -42,16 +42,16 @@ const rootReducer = combineReducers({
 export default rootReducer;
 ```
 
-## Parameters
+# Parameters
 
 ```javascript
 entitiesReducer(reducers, { dataResolver })
 ```
 
-### [#parameters-reducers] Reducers
+### Reducers
 Reducers are passed directly into `combineReducers` from redux, after the entities have been updated in state. It is called with the updated state and immediately returned. 
 
-### [#parameters-data-resolver] dataResolver
+### dataResolver
 The data resolver is a lookup function that is passed the action and returns the entities object to use while updating.
 If the data resolver returns a falsy value the `entities-reducer` will skip process and move directly to handling the custom reducers. 
 Below is a customer dataResolver example, or you can checkout the [default resolver](src/index.js). 
