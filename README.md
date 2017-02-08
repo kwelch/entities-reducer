@@ -48,10 +48,10 @@ export default rootReducer;
 entitiesReducer(reducers, { dataResolver })
 ```
 
-### (#parameters-reducers) Reducers
+### [#parameters-reducers] Reducers
 Reducers are passed directly into `combineReducers` from redux, after the entities have been updated in state. It is called with the updated state and immediately returned. 
 
-### (#parameters-data-resolver) dataResolver
+### [#parameters-data-resolver] dataResolver
 The data resolver is a lookup function that is passed the action and returns the entities object to use while updating.
 If the data resolver returns a falsy value the `entities-reducer` will skip process and move directly to handling the custom reducers. 
 Below is a customer dataResolver example, or you can checkout the [default resolver](src/index.js). 
