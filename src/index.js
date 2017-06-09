@@ -6,10 +6,12 @@ const updateEntity = (state, entities) => {
 };
 
 const updateEntities = (state, key, entities) => {
-  return Object.assign({}, state, { [key]: updateEntity(state[key], entities[key]) });
+  return Object.assign({}, state, {
+    [key]: updateEntity(state[key], entities[key]),
+  });
 };
 
-const defaultDataResolver = (action) => {
+const defaultDataResolver = action => {
   if (isFSA(action)) {
     const { payload } = action;
     if (payload && !payload.error && payload.entities) {
@@ -20,14 +22,34 @@ const defaultDataResolver = (action) => {
   return action.entities;
 };
 
-export default (reducers, { dataResolver } = { dataResolver: defaultDataResolver }) => (state = {}, action) => {
+const noOpReducer = (state = null) => state;
+
+const resolveAction = (reducers = {}, state, action) => {
+  const baseReducers = Object.keys(state)
+    .filter(key => !Object.keys(reducers).includes(key))
+    .reduce((acc, curr) => {
+      return {
+        ...acc,
+        [curr]: noOpReducer,
+      };
+    }, {});
+  return combineReducers(Object.assign({}, baseReducers, reducers))(
+    state,
+    action
+  );
+};
+
+export default (
+  reducers,
+  { dataResolver } = { dataResolver: defaultDataResolver }
+) => (state = {}, action) => {
   let newState = state;
   const entities = dataResolver(action);
   if (entities && typeof entities === 'object') {
-    newState = Object.keys(entities).reduce((acc, key) => updateEntities(acc, key, entities), newState);
+    newState = Object.keys(entities).reduce(
+      (acc, key) => updateEntities(acc, key, entities),
+      newState
+    );
   }
-  if (reducers && typeof reducers === 'object' && Object.keys(reducers).length > 0) {
-    return combineReducers(reducers)(newState, action);
-  }
-  return newState;
+  return resolveAction(reducers, newState, action);
 };
