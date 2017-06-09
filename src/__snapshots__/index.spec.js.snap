@@ -1,4 +1,4 @@
-exports[`entitiesReducer should allow customer reducers  1`] = `
+exports[`entitiesReducer should allow custom reducers 1`] = `
 Object {
   "users": Object {},
 }

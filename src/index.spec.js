@@ -108,7 +108,7 @@ describe('entitiesReducer', () => {
     expect(newState).toEqual(initialState);
   });
 
-  it('should allow customer reducers ', () => {
+  it('should allow custom reducers', () => {
     const customUserReducer = (state = {}, action) => {
       switch (action.type) {
         case "ENTITY/DELETE": {
