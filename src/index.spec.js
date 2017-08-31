@@ -198,4 +198,15 @@ describe('entitiesReducer', () => {
     console.error = error;
     /* eslint-enable no-console */
   });
+  
+  it('should handle no custom reducers and empty initial state', () => {
+    /* eslint-disable no-console */
+    const error = console.error;
+    console.error = jest.fn();
+    const result = entitiesReducer({})({}, {});
+    expect(console.error).not.toHaveBeenCalled();
+    expect(result).toEqual({});
+    console.error = error;
+    /* eslint-enable no-console */
+  });
 });

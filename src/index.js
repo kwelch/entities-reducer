@@ -33,10 +33,14 @@ const resolveAction = (reducers = {}, state, action) => {
         [curr]: noOpReducer,
       };
     }, {});
-  return combineReducers(Object.assign({}, baseReducers, reducers))(
-    state,
-    action
-  );
+  const mergedReducers = Object.assign({}, baseReducers, reducers);
+  if (Object.keys(mergedReducers).length) {
+    return combineReducers(Object.assign({}, baseReducers, reducers))(
+      state,
+      action
+    );
+  }
+  return state;
 };
 
 export default (
