@@ -19,7 +19,7 @@ One of the best things to store in redux is data from server requests. Additiona
 To simplify the storing of the data, this package will handle updating state with fresh normalized data.
  
 Entities Reducer is a high-order reducer, which means it will accept more reducers for further customizations.
-The custom reducers are passed directly to `combineRecuders` from redux and should be passed into `entities-reducers` with the same format. 
+The custom reducers are passed directly to `combineReducers` from redux and should be passed into `entities-reducers` with the same format. 
 
 ## Installation
 ```
